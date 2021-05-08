@@ -1,0 +1,110 @@
+.container{
+
+   padding-top: 30vh;
+   max-width: 1110px;
+   margin: 0 80px;
+
+   @media(max-width: 500px){
+      margin : 0px 25px;
+      padding-top: 10vh;
+   }
+}
+
+.container_logo{
+
+   display: flex;
+   align-items: center;
+   
+   margin-bottom: 3rem;
+
+   
+   img{
+      width: 55px;
+      height: auto;
+   }
+
+   //Título do container da logo
+   span{
+      color : #4F4F4F;
+      font-size: 1.7rem;
+      font-weight: 500;
+      line-height: 1.8rem;
+      margin-left: 1rem;
+   }
+}
+
+.searchBar{
+   max-width: 974px;
+   margin-top: 15px;
+   display: flex;
+   align-items: center;
+
+   h1{
+      margin-bottom: 4rem;
+   }
+
+   input{
+      width: 70%;
+      height: 72px;
+      padding-left: 25px;
+      outline: none;
+      padding-left: 1.5rem;
+      margin : 0;
+
+      font-weight: normal;
+      font-size: 1.3rem;
+      line-height : 1.5rem;
+      color: --var(--gray-900);
+
+
+      background: #FFFFFF;
+ 
+      border: none;
+      border-radius: 5px 0px 0px 5px; 
+   }
+   button{
+
+      width: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 72px;
+      background: #333333;
+      border-radius: 0px 5px 5px 0px;
+     
+      border: none;
+      padding-right: 2rem;
+
+
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 1.2rem;
+      
+      span{
+         margin-left : 15px;
+      }
+
+      //Mobile 
+      @media(max-width: 782px){
+         padding-right: 0;
+
+         width: 17%;
+         
+         //Para deixar só o icone do botão aparecer quando for mobile
+         span{
+            display: none;
+         }
+
+         svg{
+            font-size: 2rem;
+         }
+      
+      }
+
+      button:disabled{
+         background: aqua;
+      }
+
+   }
+}

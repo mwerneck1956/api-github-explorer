@@ -1,0 +1,51 @@
+.navbar{
+
+   margin : 25px auto;
+   width: 80vw;
+
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+
+   .navbar__logoContainer{
+
+      display: flex;
+      align-items: center;
+            
+      img{
+         width: 35px;
+         height: auto;
+      }
+   
+      //Título do container da logo
+      span{
+         color : #4F4F4F;
+         font-size: 1.3rem;
+         font-weight: 500;
+         line-height: 1.8rem;
+         margin-left: 1rem;
+      }
+   }
+
+   .navbar__goBackButton{
+      background: transparent;
+      border: none;
+      color: #A8A8B3;
+      font-weight: 700;
+      font-size: 1.2rem;
+
+
+      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      transition: filter 0.5s;
+
+      &:hover{
+         filter: brightness(60%);
+      }
+
+   }
+}

@@ -1,0 +1,58 @@
+*{
+  margin : 0;
+  padding : 0;
+  box-sizing: border-box;
+}
+
+@media(max-width : 1080px){
+  html{
+     font-size : 93.75%;
+  }
+}
+
+@media(max-width : 720px){
+  html{
+     font-size : 87.5%;
+  }
+}
+
+
+:root{
+  --white : #ffffff;
+
+  --gray-200  : #F2F2FA;;
+  --gray-300 : #a8a8b3;
+  --gray-800 : #3A3A3A;
+  --gray-850 : #1f2729;
+  --gray-900 : #121214;
+
+  --cyan-500 : #61dafb;
+  --yellow-500 : #eba417;
+}
+
+body{
+  background: var(--gray-200);
+  color : var(--gray-800);
+
+}
+
+body,input,textarea,select,button {
+  font : 400 1rem "Roboto",sans-serif;
+}
+
+button{
+  cursor: pointer;
+}
+
+a{
+  color : inherit;
+  text-decoration: none;
+}
+
+//Tirar botão de limpar campo do input type='search'
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
