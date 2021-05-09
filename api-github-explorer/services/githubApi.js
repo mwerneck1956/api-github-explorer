@@ -4,7 +4,7 @@ export const githubApi = axios.create({
   baseURL: 'https://api.github.com/',     
   headers : {
      'User-Agent' : 'Github-Users-Explorer',
-     'Authorization' : 'token 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'
+     'Authorization' : 'token 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'
   }
   
 });
