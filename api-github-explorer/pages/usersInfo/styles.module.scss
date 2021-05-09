@@ -8,7 +8,7 @@
      margin: 4rem auto;
    }
 
-   .container__listReposButton{
+   &__listReposButton{
       background: var(--gray-950);
       margin : 3rem 1rem 1rem 0rem;
 
@@ -24,7 +24,7 @@
       }
    }
 
-   .container__listStarredReposButton{
+   &__listStarredReposButton{
       background: var(--purple);
 
       

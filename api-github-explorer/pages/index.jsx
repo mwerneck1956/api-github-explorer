@@ -20,9 +20,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.container_logo}>
-        <img src="/images/github-logo.svg" alt="Github logo" />
-        <span>
+      <div className={styles.container__logo}>
+        <img 
+          src="/images/github-logo.svg" 
+          alt="Github logo" 
+          className = {styles.container__logo__img}
+        />
+        <span
+          className = {styles.container__logo__span}
+        >
           Github Users Explorer
         </span>
       </div>
@@ -32,7 +38,7 @@ export default function Home() {
       </h1>
       
       <form>
-        <div className={styles.searchBar}>
+        <div className={styles.container__searchBar}>
           <input 
             type="search" 
             name="search_user" 

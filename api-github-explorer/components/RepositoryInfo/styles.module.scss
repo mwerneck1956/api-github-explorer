@@ -27,25 +27,23 @@
       margin : 2rem 1rem;
    }
 
+   &__title{
+      color : #3d3d4d;
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 1.4rem;
+      max-width: 50ch;
+   }
+   
+   &__author{
+      margin-top: 0.8rem;
+      color : #A8A8B3;
+      font-weight: 400;
+      font-size: 1.1rem;
+      line-height: 1.3rem;
+   
+   }
+
 } 
 
-.repositoryContainer__title{
 
-   color : #3d3d4d;
-   font-weight: 700;
-   font-size: 1.5rem;
-   line-height: 1.4rem;
-   max-width: 50ch;
-  
-
-}
-
-.repositoryContainer__author{
-   margin-top: 0.8rem;
-   color : #A8A8B3;
-   font-weight: 400;
-   font-size: 1.1rem;
-   line-height: 1.3rem;
-
-
-}
