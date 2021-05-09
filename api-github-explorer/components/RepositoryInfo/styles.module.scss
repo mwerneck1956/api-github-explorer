@@ -1,0 +1,49 @@
+.repositoryContainer{
+   max-width: 960px;
+   height: 112px;
+
+   margin-top: 2rem;
+   
+
+   padding-left: 2rem;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+
+   border-radius: 5px;
+
+   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
+   background: #fff;
+
+   transition: height 0.4s;
+
+   &:hover{
+      height: 135px;
+      border : 1px solid var(--gray-800);
+   }
+
+   @media(max-width : 1126px){
+      margin : 2rem 1rem;
+   }
+
+} 
+
+.repositoryContainer__title{
+
+   color : #3d3d4d;
+   font-weight: 700;
+   font-size: 1.5rem;
+   line-height: 1.4rem;
+
+}
+
+.repositoryContainer__author{
+   margin-top: 0.8rem;
+   color : #A8A8B3;
+   font-weight: 400;
+   font-size: 1.1rem;
+   line-height: 1.3rem;
+
+
+}

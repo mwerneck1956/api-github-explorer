@@ -1,0 +1,41 @@
+.container{
+
+   max-width: 500px;
+   margin : 0 15px;
+
+   display: flex;
+   align-items: center;
+
+   @media(max-width : 500px){
+      flex-direction: column;
+      align-items: flex-start;
+   }
+
+   .container__img{
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+   }
+
+   .container__userInfo{
+
+      margin-left: 15px;
+
+      .container__userInfo__strong{
+         width: 100%;
+         font-size: 2rem;
+         line-height: 3rem;
+         font-weight: 700
+      }
+
+      .container__userInfo__p{
+
+         text-align: justify;
+         color : #737380;
+         font-weight: normal;
+         font-size: 1rem;
+         line-height: 1.3rem;
+
+      }
+   }
+}

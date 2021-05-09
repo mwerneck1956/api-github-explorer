@@ -27,10 +27,11 @@ export default function Home() {
         </span>
       </div>
 
-      <form>
-        <h1>
+      <h1 className={styles.container__title}>
           Explore usuários no Github
-        </h1>
+      </h1>
+      
+      <form>
         <div className={styles.searchBar}>
           <input 
             type="search" 

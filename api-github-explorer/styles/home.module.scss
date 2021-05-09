@@ -8,6 +8,11 @@
       margin : 0px 25px;
       padding-top: 10vh;
    }
+
+   .container__title{
+      margin-bottom: 2rem;
+   }
+  
 }
 
 .container_logo{
@@ -23,6 +28,7 @@
       height: auto;
    }
 
+
    //Título do container da logo
    span{
       color : #4F4F4F;
@@ -31,6 +37,7 @@
       line-height: 1.8rem;
       margin-left: 1rem;
    }
+
 }
 
 .searchBar{
@@ -39,12 +46,8 @@
    display: flex;
    align-items: center;
 
-   h1{
-      margin-bottom: 4rem;
-   }
-
    input{
-      width: 70%;
+      width: 80%;
       height: 72px;
       padding-left: 25px;
       outline: none;
