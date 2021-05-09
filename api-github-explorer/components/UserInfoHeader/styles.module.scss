@@ -1,7 +1,7 @@
 .container{
 
    max-width: 500px;
-   margin : 0 15px;
+   margin : 0 1rem;
 
    display: flex;
    align-items: center;
@@ -11,24 +11,30 @@
       align-items: flex-start;
    }
 
-   .container__img{
+   &__img{
       width: 120px;
       height: 120px;
       border-radius: 50%;
+
+      @media(max-width : 500px){
+         width: 90px;
+         height: auto;
+      }
+
    }
 
-   .container__userInfo{
+   &__userInfo{
 
       margin-left: 15px;
 
-      .container__userInfo__strong{
+      &__strong{
          width: 100%;
          font-size: 2rem;
          line-height: 3rem;
          font-weight: 700
       }
 
-      .container__userInfo__p{
+      &__p{
 
          text-align: justify;
          color : #737380;
