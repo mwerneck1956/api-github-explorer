@@ -43,7 +43,9 @@ export default function Home() {
             maxLength = "100"
           />
           <Link href = {`/usersInfo/${searchedUser}`}>
-            <button>
+            <button
+                 disabled={searchedUser.length <= 0}
+            >
               <FiSearch/> <span>Pesquisar</span>
             </button>
           </Link>

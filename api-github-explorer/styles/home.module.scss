@@ -84,6 +84,17 @@
       font-weight: 600;
       font-size: 1.2rem;
       
+      transition: all 0.5s;
+
+      &:hover{
+         filter: brightness(70%);
+      }
+ 
+
+      &:disabled{
+         background-color: silver;
+      }
+
       span{
          margin-left : 15px;
       }
@@ -103,10 +114,6 @@
             font-size: 2rem;
          }
       
-      }
-
-      button:disabled{
-         background: aqua;
       }
 
    }
