@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { Button } from '../../components/Button'
 import { Navbar } from '../../components/Navbar'
 import { RepositoryInfo } from '../../components/RepositoryInfo'
 import { UserInfoHeader } from '../../components/UserInfoHeader'
@@ -14,20 +15,35 @@ export default function usersInfo({ data }) {
    const {name , avatar_url , description , repositories , error} = data;
 
    const [listStarredRepositories,setListStarredRepositories] = useState(false);
+   const [userRepositories,setUserRepositories] = useState([]);
    const [starredRepositories,setStarredRepositories] = useState([]);
+   const [fetching,setFetching] = useState(true);
 
    const router = useRouter()
    const { username } = router.query
 
 
+   async function listUserRepostories(){
+      try{
+       setFetching(true)
+       const response = await getUserRepositories(username);
+       setUserRepositories(response);
+      }catch(err){
+         console.log(err)
+      }finally{
+         setFetching(false)
+      }
+    }
+
    async function listUserStarredRepostories(){
      try{
+      setFetching(true)
       const response = await getUserStarredRepositories(username);
-      console.log(response)
-
       setStarredRepositories(response);
      }catch(err){
         console.log(err)
+     }finally{
+        setFetching(false)
      }
    }
 
@@ -44,15 +60,20 @@ export default function usersInfo({ data }) {
    }
 
    function renderUserStarredRepositories(){
-      return starredRepositories.map((repo,index) => {
-         return (
-            <RepositoryInfo 
-               key = {index}
-               title = {repo.full_name}
-               author = {repo.owner.login}
-            />
-         )
-      })
+      return starredRepositories.length > 0 ? 
+         starredRepositories.map((repo,index) => {
+            return (
+               <RepositoryInfo 
+                  key = {index}
+                  title = {repo.full_name}
+                  author = {repo.owner.login}
+               />
+            )
+         })
+         :
+         <div>
+            Nenhum repositório encontrado...
+         </div>
    }
 
 
@@ -66,12 +87,27 @@ export default function usersInfo({ data }) {
                name={name}
                description={description}
             />
-            <button
-               onClick = {listUserStarredRepostories}
+            <Button
+               onClick = { () => {
+                  setListStarredRepositories(true)
+                  listUserStarredRepostories()
+               }}
+               className = {styles.container__listReposButton}
             >
                Listar Repositórios Starred
-            </button>
-            {renderUserRepositories()}
+            </Button>
+            <Button
+               className={styles.container__listStarredReposButton}
+               onClick = {() => {
+                  setListStarredRepositories(false)
+                  listUserRepostories()
+               }}
+            >
+               Listar Repositórios
+            </Button>
+            {listStarredRepositories ? renderUserStarredRepositories() : renderUserRepositories()}
+
+            {fetching && <div>Carregando......</div>}
          </section>
 
       </>

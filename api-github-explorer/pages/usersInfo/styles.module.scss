@@ -1,4 +1,36 @@
 .container{
    max-width: 1110px;
    margin: 100px auto;
+
+
+   
+   @media(max-width : 500px){
+     margin: 4rem auto;
+   }
+
+   .container__listReposButton{
+      background: var(--gray-950);
+      margin : 3rem 1rem 1rem 0rem;
+
+
+      @media(max-width : 1110px){
+         margin: 3rem 1rem 0rem 1rem;
+      }
+
+      //Mobile-size
+      @media(max-width : 576px){
+         width: 95%;
+         margin: 1rem;
+      }
+   }
+
+   .container__listStarredReposButton{
+      background: var(--purple);
+
+      
+      @media(max-width : 576px){
+         width: 95%;
+         margin: 0.5rem 1rem;
+      }
+   }
 }
