@@ -12,7 +12,7 @@ export function UserInfoHeader({
       <header className ={styles.container}>
          <img 
             src = {avatar_url ||emptyAvatarUrl} 
-            alt = "Foto do usuário"
+            alt = "User picture"
             className = {styles.container__img}
          />
          <div className={styles.container__userInfo}>
