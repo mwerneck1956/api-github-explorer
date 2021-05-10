@@ -8,7 +8,7 @@ export function RepositoryInfo({
    linkToRepository
 }) {
    return (
-      <a href = "https://github.com/" target ="_blank">
+      <a href = {linkToRepository} target ="_blank">
          <div className={styles.repositoryContainer}>
             <strong className={styles.repositoryContainer__title}>
                {title.length > 40 ? title.substring(0,37) +'...' : title}
