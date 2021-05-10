@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Button } from '../../components/Button'
 import { Navbar } from '../../components/Navbar'
-import { Preloader } from '../../components/PreLoader'
+import { Preloader } from '../../components/Preloader'
 import { RepositoryInfo } from '../../components/RepositoryInfo'
 import { UserInfoHeader } from '../../components/UserInfoHeader'
 import { UserNotFound } from '../../components/UserNotFound'
@@ -13,21 +13,25 @@ import styles from './styles.module.scss'
 
 export default function usersInfo({ data }) {
 
+   const router = useRouter()
+   const { username } = router.query
 
    const { name, avatar_url, description, repositories, error } = data;
 
-   const [listStarredRepositories, setListStarredRepositories] = useState(false);
+   //Váriavel para guardar a lista ativa do momento, se é de listagem
+   //de repositórios starred, ou respositórios do usuário
+   const [activeRepositoriesList,setActiveRepositoriesList] = useState('userRepositories');
+
    const [userRepositories, setUserRepositories] = useState([]);
    const [starredRepositories, setStarredRepositories] = useState([]);
    const [fetching, setFetching] = useState(false);
 
-   const router = useRouter()
-   const { username } = router.query
-
+ 
 
    async function listUserRepostories() {
       try {
          setFetching(true)
+         setActiveRepositoriesList('userRepos')
 
          const userRepositories = await getUserRepositories(username);
          setUserRepositories(userRepositories);
@@ -41,6 +45,7 @@ export default function usersInfo({ data }) {
 
    async function listUserStarredRepostories() {
       try {
+         setActiveRepositoriesList('starredRepos')
          setFetching(true)
 
          const starredRepositories = await getUserStarredRepositories(username);
@@ -111,6 +116,7 @@ export default function usersInfo({ data }) {
    return (
       <>
          <Navbar />
+        
          {
             !error ?
                <section className={styles.container}>
@@ -120,28 +126,29 @@ export default function usersInfo({ data }) {
                      description={description}
                   />
                   <Button
-                     onClick={() => {
-                        setListStarredRepositories(true)
-                        listUserStarredRepostories()
-                     }}
+                     onClick={() => listUserStarredRepostories()}
+                     name = "listStarredRepositories"
+                     disabled = {activeRepositoriesList === 'starredRepos'}
                      className={styles.container__listReposButton}
                   >
                      Listar Repositórios Starred
                   </Button>
                   <Button
+                     name = "listUserRepositories"
                      className={styles.container__listStarredReposButton}
-                     onClick={() => {
-                        setListStarredRepositories(false)
-                        listUserRepostories()
-                     }}
-                     
+                     onClick={() => listUserRepostories()}
+                     disabled = {activeRepositoriesList === 'userRepos'}
                   >
                      Listar Repositórios
                   </Button>
-                  {fetching && <Preloader />}
-                  {listStarredRepositories ? renderUserStarredRepositories() : renderUserRepositories()}
+         
+                  {activeRepositoriesList === 'starredRepos' ? 
+                     renderUserStarredRepositories() : 
+                     renderUserRepositories()
+                  }
                </section>
-               : <UserNotFound />
+               : 
+            <UserNotFound />
          }
 
       </>
@@ -172,7 +179,7 @@ export async function getServerSideProps(context) {
    } catch (err) {
 
       return {
-         props: {
+      props: {
             data: {
                error: true
             }
