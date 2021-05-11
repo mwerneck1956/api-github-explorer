@@ -14,6 +14,7 @@
       border-radius: 0px;
       color: var(--gray-900);
       transition: all 0.2s;
+      text-align: start;
 
       margin : 3rem 1rem 1rem 0rem;
 
@@ -36,6 +37,7 @@
    &__listStarredReposButton{
       background: transparent;
 
+      text-align: start;
       color: var(--gray-900);
       border-radius: 0px;
 
@@ -51,4 +53,8 @@
       }
 
    }
+}
+
+.repositoriesNotFound{
+   width: 100%;
 }

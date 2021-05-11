@@ -112,11 +112,9 @@ export default function usersInfo({ data }) {
 
    function renderRepositoriesNotFound() {
       return (
-         <div>
             <h2 className={styles.repositoriesNotFound}>
                Nenhum repositório encontrado!
             </h2>
-         </div>
       )
    }
 
@@ -153,9 +151,6 @@ export default function usersInfo({ data }) {
                         renderUserStarredRepositories() : 
                         renderUserRepositories()
                      }
-
-                     {fetching && <Preloader />}
-
                      </> : <UserNotFound />
                   
                   }
