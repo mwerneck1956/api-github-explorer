@@ -1,9 +1,8 @@
 .navbar{
 
    margin : 25px auto;
-   width: 90vw;
-   max-width: 1300px;
-   
+   width: 80vw;
+  
 
    display: flex;
    align-items: center;
@@ -26,7 +25,13 @@
          font-weight: 500;
          line-height: 1.8rem;
          margin-left: 1rem;
+
+         @media(max-width : 400px){
+            display: none;
+         }
       }
+
+   
    }
 
    &__goBackButton{

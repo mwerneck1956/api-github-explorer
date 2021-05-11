@@ -107,7 +107,7 @@ export default function usersInfo({ data }) {
       return (
          <div>
             <h2 className={styles.repositoriesNotFound}>
-               Nenhum repositório encontrado...
+               Nenhum repositório encontrado!
             </h2>
          </div>
       )
@@ -116,40 +116,42 @@ export default function usersInfo({ data }) {
    return (
       <>
          <Navbar />
-        
-         {
-            !error ?
                <section className={styles.container}>
-                  <UserInfoHeader
-                     avatar_url={avatar_url}
-                     name={name}
-                     description={description}
-                  />
-                  <Button
-                     onClick={() => listUserStarredRepostories()}
-                     name = "listStarredRepositories"
-                     disabled = {activeRepositoriesList === 'starredRepos'}
-                     className={styles.container__listReposButton}
-                  >
-                     Listar Repositórios Starred
-                  </Button>
-                  <Button
-                     name = "listUserRepositories"
-                     className={styles.container__listStarredReposButton}
-                     onClick={() => listUserRepostories()}
-                     disabled = {activeRepositoriesList === 'userRepos'}
-                  >
-                     Listar Repositórios
-                  </Button>
-         
-                  {activeRepositoriesList === 'starredRepos' ? 
-                     renderUserStarredRepositories() : 
-                     renderUserRepositories()
+                  {
+                     !error ? 
+                     <>
+                        <UserInfoHeader
+                        avatar_url={avatar_url}
+                        name={name}
+                        description={description}
+                     />
+                     <Button
+                        onClick={() => listUserStarredRepostories()}
+                        name = "listStarredRepositories"
+                        className={`${styles.container__listReposButton}
+                           ${activeRepositoriesList === 'starredRepos' && styles.active}
+                        `}
+                     >
+                        Listar Repositórios Starred
+                     </Button>
+                     <Button
+                        name = "listUserRepositories"
+                        className={styles.container__listStarredReposButton}
+                        onClick={() => listUserRepostories()}
+                     >
+                        Listar Repositórios
+                     </Button>
+            
+                     {activeRepositoriesList === 'starredRepos' ? 
+                        renderUserStarredRepositories() : 
+                        renderUserRepositories()
+                     }
+                     </> : <UserNotFound />
+                  
                   }
                </section>
-               : 
-            <UserNotFound />
-         }
+            
+         
 
       </>
    )

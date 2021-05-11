@@ -8,7 +8,7 @@ export function UserNotFound(){
    return(
       <div className={styles.container}>
          <h1 className = {styles.container__title}>
-            Usuário não encontrado...
+            Usuário não encontrado!
          </h1>
          <Link href = "/">
             <Button className = {styles.container__goBackButton}>

@@ -1,8 +1,8 @@
 .repositoryContainer{
-   max-width: 960px;
+   width: 100%;
    height: 112px;
 
-   margin-top: 2rem;
+   margin-top: 1.4rem;
    
 
    padding-left: 2rem;
@@ -23,16 +23,24 @@
       border : 1px solid var(--gray-800);
    }
 
+   //Smal notebooks, large tablets
    @media(max-width : 1126px){
-      margin : 2rem 1rem;
+      margin : 1rem 1rem;
+   }
+
+   //Mobile
+   @media(max-width : 600px){
+      margin: 1rem 0rem;
    }
 
    &__title{
       color : #3d3d4d;
       font-weight: 700;
       font-size: 1.5rem;
-      line-height: 1.4rem;
-      max-width: 50ch;
+      line-height: 2rem;
+      max-width: 90vw;
+      overflow : hidden;
+      
    }
    
    &__author{

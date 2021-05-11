@@ -1,15 +1,15 @@
 .container{
-   max-width: 1110px;
-   margin: 100px auto;
+   max-width: 80vw;
+   margin: 50px auto;
 
-
-   
+   //Ajustes de responsividade para mobile
    @media(max-width : 500px){
      margin: 4rem auto;
+     max-width: 95vw;
    }
 
    &__listReposButton{
-      background: var(--gray-950);
+      background: var(--purple);
       margin : 3rem 1rem 1rem 0rem;
 
 
@@ -18,19 +18,21 @@
       }
 
       //Mobile-size
-      @media(max-width : 576px){
+      @media(max-width : 720px){
          width: 95%;
          margin: 1rem;
       }
+
    }
 
    &__listStarredReposButton{
-      background: var(--purple);
+      background: var(--gray-950);
 
-      
-      @media(max-width : 576px){
+      @media(max-width : 720px){
          width: 95%;
          margin: 0.5rem 1rem;
       }
+
+      
    }
 }
