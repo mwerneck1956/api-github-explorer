@@ -3,13 +3,18 @@
    margin: 50px auto;
 
    //Ajustes de responsividade para mobile
-   @media(max-width : 500px){
+   @media(max-width : 600px){
      margin: 4rem auto;
      max-width: 95vw;
    }
 
    &__listReposButton{
-      background: var(--purple);
+      background: transparent;
+
+      border-radius: 0px;
+      color: var(--gray-900);
+      transition: all 0.2s;
+
       margin : 3rem 1rem 1rem 0rem;
 
 
@@ -17,22 +22,33 @@
          margin: 3rem 1rem 0rem 1rem;
       }
 
-      //Mobile-size
+
       @media(max-width : 720px){
          width: 95%;
          margin: 1rem;
       }
 
+      &:hover{
+         color: var(--purple);
+      }
    }
 
    &__listStarredReposButton{
-      background: var(--gray-950);
+      background: transparent;
+
+      color: var(--gray-900);
+      border-radius: 0px;
+
+      transition: all 0.2s;
 
       @media(max-width : 720px){
          width: 95%;
          margin: 0.5rem 1rem;
       }
 
-      
+      &:hover{
+         color: var(--purple);
+      }
+
    }
 }

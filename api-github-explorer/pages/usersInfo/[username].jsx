@@ -11,6 +11,13 @@ import { getUserRepositories, githubApi, getUserStarredRepositories } from '../.
 import styles from './styles.module.scss'
 
 
+const activeButtonStyle = {
+   color: '#9B51E0',
+   borderBottom: '3px solid #8B3ED3',
+   borderRadius : '0',
+   transtion : 'all 0.2s'
+}
+
 export default function usersInfo({ data }) {
 
    const router = useRouter()
@@ -20,7 +27,7 @@ export default function usersInfo({ data }) {
 
    //Váriavel para guardar a lista ativa do momento, se é de listagem
    //de repositórios starred, ou respositórios do usuário
-   const [activeRepositoriesList,setActiveRepositoriesList] = useState('userRepositories');
+   const [activeRepositoriesList,setActiveRepositoriesList] = useState('userRepos');
 
    const [userRepositories, setUserRepositories] = useState([]);
    const [starredRepositories, setStarredRepositories] = useState([]);
@@ -118,7 +125,7 @@ export default function usersInfo({ data }) {
          <Navbar />
                <section className={styles.container}>
                   {
-                     !error ? 
+                     !error? 
                      <>
                         <UserInfoHeader
                         avatar_url={avatar_url}
@@ -128,9 +135,8 @@ export default function usersInfo({ data }) {
                      <Button
                         onClick={() => listUserStarredRepostories()}
                         name = "listStarredRepositories"
-                        className={`${styles.container__listReposButton}
-                           ${activeRepositoriesList === 'starredRepos' && styles.active}
-                        `}
+                        className={`${styles.container__listReposButton}`}
+                        style = {activeRepositoriesList === 'starredRepos' ? activeButtonStyle : {}}
                      >
                         Listar Repositórios Starred
                      </Button>
@@ -138,6 +144,7 @@ export default function usersInfo({ data }) {
                         name = "listUserRepositories"
                         className={styles.container__listStarredReposButton}
                         onClick={() => listUserRepostories()}
+                        style = {activeRepositoriesList === 'userRepos' ? activeButtonStyle : {}}
                      >
                         Listar Repositórios
                      </Button>
@@ -146,6 +153,9 @@ export default function usersInfo({ data }) {
                         renderUserStarredRepositories() : 
                         renderUserRepositories()
                      }
+
+                     {fetching && <Preloader />}
+
                      </> : <UserNotFound />
                   
                   }
