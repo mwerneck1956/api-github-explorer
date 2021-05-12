@@ -5,8 +5,8 @@ import { Navbar } from '../../components/Navbar'
 import { Preloader } from '../../components/Preloader'
 import { RepositoryInfo } from '../../components/RepositoryInfo'
 import { UserInfoHeader } from '../../components/UserInfoHeader'
-import { UserNotFound } from '../../components/UserNotFound'
-import { getUserRepositories, githubApi, getUserStarredRepositories } from '../../services/githubApi'
+import { GenericError } from '../../components/GenericError'
+import { getUserRepositories, githubApi, getUserStarredRepositories, getUserByUsername } from '../../services/githubApi'
 
 
 import styles from './styles.module.scss'
@@ -24,7 +24,9 @@ export default function usersInfo({ data }) {
    const router = useRouter()
    const { username } = router.query
 
-   const { name, avatar_url, description, userRepositories , error } = data;
+   const { name, avatar_url, description, userRepositories } = data;
+
+
 
    //Váriavel para guardar a lista ativa do momento, se é de listagem
    //de repositórios starred, ou respositórios do usuário
@@ -35,7 +37,7 @@ export default function usersInfo({ data }) {
    const [repositories,setRepositories] = useState(userRepositories)
 
    const [fetching, setFetching] = useState(false);
-
+   const [error,setError] = useState(data.error)
  
 
    async function listRepostories(repositoryType) {
@@ -51,9 +53,11 @@ export default function usersInfo({ data }) {
             const userRepositories = await getUserStarredRepositories(username);
             setRepositories(userRepositories);
          }  
-            
+         
+         setError(false);
+
       } catch (err) {
-         console.log(err)
+         setError(err.message)
       } finally {
          setFetching(false)
       }
@@ -66,7 +70,7 @@ export default function usersInfo({ data }) {
                repositories.map((repo, index) => {
                   return (
                      <RepositoryInfo
-                        key={index}
+                        key={repo.id}
                         title={repo.full_name}
                         author={repo.owner.login}
                         linkToRepository ={repo.html_url}
@@ -115,13 +119,12 @@ export default function usersInfo({ data }) {
                >
                   List Repositories
                </Button>
-
          
                {!fetching ? renderRepositories() : <Preloader/>}
             </section>
       </>
 
-   ) : <UserNotFound /> 
+   ) : <GenericError  title = {error} /> 
 
 }
 export async function getServerSideProps(context) {
@@ -129,10 +132,9 @@ export async function getServerSideProps(context) {
    const { username } = context.query;
 
    try {
-      const response = await githubApi.get(`/users/${username}`);
+      const userInfo = await getUserByUsername(username);
       const userRepositories = await getUserRepositories(username);
 
-      const userInfo = response.data;
 
       return {
          props: {
@@ -148,7 +150,7 @@ export async function getServerSideProps(context) {
       return {
          props: {
                data: {
-                  error: true,
+                  error: err.message,
                }
             }
          }

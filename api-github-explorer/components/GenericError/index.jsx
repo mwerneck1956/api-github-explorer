@@ -4,11 +4,14 @@ import { Button } from '../Button'
 import styles from './styles.module.scss'
 import { FiArrowLeft } from 'react-icons/fi'
 
-export function UserNotFound(){
+export function GenericError(props){
+   
+   const {title} = props;
+
    return(
       <div className={styles.container}>
          <h1 className = {styles.container__title}>
-            User Not Found!
+             {title}
          </h1>
          <Link href = "/">
             <Button className = {styles.container__goBackButton}>
