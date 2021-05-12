@@ -105,7 +105,7 @@ export default function usersInfo({ data }) {
                   className={`${styles.container__listReposButton}`}
                   style = {activeRepositoriesList === 'starredRepos' ? activeButtonStyle : {}}
                >
-                  Listar Repositórios Starred
+                  List starred Repositories
                </Button>
                <Button
                   name = "listUserRepositories"
@@ -113,7 +113,7 @@ export default function usersInfo({ data }) {
                   onClick={() => listRepostories('userRepos')}
                   style = {activeRepositoriesList === 'userRepos' ? activeButtonStyle : {}}
                >
-                   Listar Repositórios
+                  List Repositories
                </Button>
 
          

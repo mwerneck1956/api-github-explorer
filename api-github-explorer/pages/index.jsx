@@ -32,7 +32,7 @@ export default function Home() {
       </div>
 
       <h1 className={styles.container__title}>
-          Explore usuários no Github
+          Explore users on github
       </h1>
       
       <form>
@@ -41,7 +41,7 @@ export default function Home() {
             type="search" 
             name="search_user" 
             id="search_user"
-            placeholder = "Digite o nome do usuário" 
+            placeholder = "Type the user name" 
             autoComplete = "off"
             onChange = {(event) => setSearchedUser(event.target.value)}
             maxLength = "100"
@@ -50,7 +50,7 @@ export default function Home() {
             <button
                  disabled={searchedUser.length <= 0}
             >
-              <FiSearch/> <span>Pesquisar</span>
+              <FiSearch/> <span>Search</span>
             </button>
           </Link>
         </div>

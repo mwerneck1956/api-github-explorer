@@ -8,13 +8,13 @@ export function UserNotFound(){
    return(
       <div className={styles.container}>
          <h1 className = {styles.container__title}>
-            Usuário não encontrado!
+            User Not Found!
          </h1>
          <Link href = "/">
             <Button className = {styles.container__goBackButton}>
                <FiArrowLeft />
                <span className = {styles.container__goBackButton__span}>   
-                  Voltar Para a tela de busca
+                  Return to the search screen
                </span>
             </Button>
          </Link>

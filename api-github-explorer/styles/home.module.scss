@@ -70,11 +70,11 @@
          justify-content: center;
 
          height: 72px;
-         background: #333333;
+         background: var(--gray-950);
          border-radius: 0px 5px 5px 0px;
       
          border: none;
-         padding-right: 2rem;
+         padding-right: 1rem;
 
 
          color: var(--white);
@@ -97,13 +97,13 @@
             margin-left : 15px;
          }
 
-         //Mobile 
+         //Ajustes para resoluções de tablets/celulares
          @media(max-width: 782px){
             padding-right: 0;
 
             width: 17%;
             
-            //Para deixar só o icone do botão aparecer quando for mobile
+            //Para deixar só o icone de pesquisa  quando for mobile
             span{
                display: none;
             }
