@@ -8,6 +8,7 @@ import { UserInfoHeader } from '../../components/UserInfoHeader'
 import { UserNotFound } from '../../components/UserNotFound'
 import { getUserRepositories, githubApi, getUserStarredRepositories } from '../../services/githubApi'
 
+
 import styles from './styles.module.scss'
 
 
@@ -23,26 +24,34 @@ export default function usersInfo({ data }) {
    const router = useRouter()
    const { username } = router.query
 
-   const { name, avatar_url, description, repositories, error } = data;
+   const { name, avatar_url, description, userRepositories , error } = data;
 
    //Váriavel para guardar a lista ativa do momento, se é de listagem
    //de repositórios starred, ou respositórios do usuário
    const [activeRepositoriesList,setActiveRepositoriesList] = useState('userRepos');
 
-   const [userRepositories, setUserRepositories] = useState([]);
-   const [starredRepositories, setStarredRepositories] = useState([]);
+   //Como na renderização inicial da página é Server Side Rendering, jogo
+   //o valor dos repositórios do usuário no meu state
+   const [repositories,setRepositories] = useState(userRepositories)
+
    const [fetching, setFetching] = useState(false);
 
  
 
-   async function listUserRepostories() {
+   async function listRepostories(repositoryType) {
       try {
          setFetching(true)
-         setActiveRepositoriesList('userRepos')
-
-         const userRepositories = await getUserRepositories(username);
-         setUserRepositories(userRepositories);
-
+         
+         if(repositoryType === 'userRepos'){
+            setActiveRepositoriesList('userRepos')
+            const userRepositories = await getUserRepositories(username);
+            setRepositories(userRepositories);
+         }else{
+            setActiveRepositoriesList('starredRepos')
+            const userRepositories = await getUserStarredRepositories(username);
+            setRepositories(userRepositories);
+         }  
+            
       } catch (err) {
          console.log(err)
       } finally {
@@ -50,26 +59,9 @@ export default function usersInfo({ data }) {
       }
    }
 
-   async function listUserStarredRepostories() {
-      try {
-         setActiveRepositoriesList('starredRepos')
-         setFetching(true)
-
-         const starredRepositories = await getUserStarredRepositories(username);
-         setStarredRepositories(starredRepositories);
-      } catch (err) {
-         console.log(err)
-      } finally {
-         setFetching(false)
-      }
-   }
-
-   function renderUserRepositories() {
+   function renderRepositories() {
       return repositories.length > 0 ? (
          <>
-            <h2>
-               Listando Repositórios de {name}
-            </h2>
             {
                repositories.map((repo, index) => {
                   return (
@@ -85,33 +77,6 @@ export default function usersInfo({ data }) {
                   )
                })
             }
-
-         </>
-      ) : renderRepositoriesNotFound()
-   }
-
-   function renderUserStarredRepositories() {
-      return starredRepositories.length > 0 ? (
-         <>
-            <h2>
-               Listando Repositórios estrelados por {name}
-            </h2>
-            {
-               starredRepositories.map((repo, index) => {
-                  return (
-                     <RepositoryInfo
-                        key={index}
-                        title={repo.full_name}
-                        author={repo.owner.login}
-                        linkToRepository ={repo.html_url}
-                        stargazersCount = {repo.stargazers_count}
-                        forksCount = {repo.forks_count}
-                        openIssuesCount = {repo.open_issues}
-                     />
-                  )
-               })
-            }
-
          </>
       ) : renderRepositoriesNotFound()
    }
@@ -124,49 +89,41 @@ export default function usersInfo({ data }) {
       )
    }
 
-   return (
+
+   return !error ? (
       <>
          <Navbar />
-               <section className={styles.container}>
-                  {
-                     !error? 
-                        <>
-                           <UserInfoHeader
-                           avatar_url={avatar_url}
-                           name={name}
-                           description={description}
-                        />
-                        <Button
-                           onClick={() => listUserStarredRepostories()}
-                           name = "listStarredRepositories"
-                           className={`${styles.container__listReposButton}`}
-                           style = {activeRepositoriesList === 'starredRepos' ? activeButtonStyle : {}}
-                        >
-                           Listar Repositórios Starred
-                        </Button>
-                        <Button
-                           name = "listUserRepositories"
-                           className={styles.container__listStarredReposButton}
-                           onClick={() => listUserRepostories()}
-                           style = {activeRepositoriesList === 'userRepos' ? activeButtonStyle : {}}
-                        >
-                           Listar Repositórios
-                        </Button>
-               
-                        {activeRepositoriesList === 'starredRepos' ? 
-                           renderUserStarredRepositories() : 
-                           renderUserRepositories()
-                        }
-                        </> : 
-                        <UserNotFound />
-                  
-                  }
-               </section>
+            <section className={styles.container}>
+               <UserInfoHeader
+                  avatar_url={avatar_url}
+                  name={name}
+                  description={description}
+               />
+               <Button
+                  onClick={() => listRepostories('starredRepos')}
+                  name = "listStarredRepositories"
+                  className={`${styles.container__listReposButton}`}
+                  style = {activeRepositoriesList === 'starredRepos' ? activeButtonStyle : {}}
+               >
+                  Listar Repositórios Starred
+               </Button>
+               <Button
+                  name = "listUserRepositories"
+                  className={styles.container__listStarredReposButton}
+                  onClick={() => listRepostories('userRepos')}
+                  style = {activeRepositoriesList === 'userRepos' ? activeButtonStyle : {}}
+               >
+                   Listar Repositórios
+               </Button>
+
+         
+               {!fetching ? renderRepositories() : <Preloader/>}
+            </section>
       </>
-   )
+
+   ) : <UserNotFound /> 
 
 }
-
 export async function getServerSideProps(context) {
 
    const { username } = context.query;
@@ -183,7 +140,7 @@ export async function getServerSideProps(context) {
                name: userInfo.name,
                avatar_url: userInfo.avatar_url,
                description: userInfo.bio,
-               repositories: userRepositories
+               userRepositories: userRepositories
             }
          }, // will be passed to the page component as props
       }
@@ -191,7 +148,7 @@ export async function getServerSideProps(context) {
       return {
          props: {
                data: {
-                  error: true
+                  error: true,
                }
             }
          }

@@ -14,7 +14,7 @@ export async function getUserByUsername(username){
 
       return response.data
    }catch(err){
-      console.log(err)
+      throw new Error(err);
    }
 }
 

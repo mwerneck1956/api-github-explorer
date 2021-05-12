@@ -1,0 +1,8 @@
+.preloader{
+    height: 112px;
+    margin : 1rem 0rem;
+
+    @media(max-width : 600px){
+        margin: 1.3rem 0.5rem;
+    }
+}
