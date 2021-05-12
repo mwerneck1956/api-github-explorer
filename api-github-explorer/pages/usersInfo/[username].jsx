@@ -78,6 +78,9 @@ export default function usersInfo({ data }) {
                         title={repo.full_name}
                         author={repo.owner.login}
                         linkToRepository ={repo.html_url}
+                        stargazersCount = {repo.stargazers_count}
+                        forksCount = {repo.forks_count}
+                        openIssuesCount = {repo.open_issues}
                      />
                   )
                })
@@ -101,6 +104,9 @@ export default function usersInfo({ data }) {
                         title={repo.full_name}
                         author={repo.owner.login}
                         linkToRepository ={repo.html_url}
+                        stargazersCount = {repo.stargazers_count}
+                        forksCount = {repo.forks_count}
+                        openIssuesCount = {repo.open_issues}
                      />
                   )
                })
@@ -124,40 +130,38 @@ export default function usersInfo({ data }) {
                <section className={styles.container}>
                   {
                      !error? 
-                     <>
-                        <UserInfoHeader
-                        avatar_url={avatar_url}
-                        name={name}
-                        description={description}
-                     />
-                     <Button
-                        onClick={() => listUserStarredRepostories()}
-                        name = "listStarredRepositories"
-                        className={`${styles.container__listReposButton}`}
-                        style = {activeRepositoriesList === 'starredRepos' ? activeButtonStyle : {}}
-                     >
-                        Listar Repositórios Starred
-                     </Button>
-                     <Button
-                        name = "listUserRepositories"
-                        className={styles.container__listStarredReposButton}
-                        onClick={() => listUserRepostories()}
-                        style = {activeRepositoriesList === 'userRepos' ? activeButtonStyle : {}}
-                     >
-                        Listar Repositórios
-                     </Button>
-            
-                     {activeRepositoriesList === 'starredRepos' ? 
-                        renderUserStarredRepositories() : 
-                        renderUserRepositories()
-                     }
-                     </> : <UserNotFound />
+                        <>
+                           <UserInfoHeader
+                           avatar_url={avatar_url}
+                           name={name}
+                           description={description}
+                        />
+                        <Button
+                           onClick={() => listUserStarredRepostories()}
+                           name = "listStarredRepositories"
+                           className={`${styles.container__listReposButton}`}
+                           style = {activeRepositoriesList === 'starredRepos' ? activeButtonStyle : {}}
+                        >
+                           Listar Repositórios Starred
+                        </Button>
+                        <Button
+                           name = "listUserRepositories"
+                           className={styles.container__listStarredReposButton}
+                           onClick={() => listUserRepostories()}
+                           style = {activeRepositoriesList === 'userRepos' ? activeButtonStyle : {}}
+                        >
+                           Listar Repositórios
+                        </Button>
+               
+                        {activeRepositoriesList === 'starredRepos' ? 
+                           renderUserStarredRepositories() : 
+                           renderUserRepositories()
+                        }
+                        </> : 
+                        <UserNotFound />
                   
                   }
                </section>
-            
-         
-
       </>
    )
 
@@ -184,14 +188,13 @@ export async function getServerSideProps(context) {
          }, // will be passed to the page component as props
       }
    } catch (err) {
-
       return {
-      props: {
-            data: {
-               error: true
+         props: {
+               data: {
+                  error: true
+               }
             }
          }
-      }
    }
 }
 

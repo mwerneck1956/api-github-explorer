@@ -8,6 +8,10 @@
    align-items: center;
    justify-content: space-between;
 
+   @media(max-width : 500px){
+      width: 90vw;
+   }
+
    &__logoContainer{
 
       display: flex;
