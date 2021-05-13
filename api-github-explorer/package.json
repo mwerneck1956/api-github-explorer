@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "NODE_ENV=test mocha --require @babel/register --require  ignore-styles ./test/*.test.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -17,7 +18,14 @@
     "sass": "^1.32.12"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.14.0",
+    "@babel/register": "^7.13.16",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-preset-react-app": "^10.0.0",
+    "babel-preset-react-app-babel-7": "^4.0.2-0",
     "chai": "^4.3.4",
+    "ignore-styles": "^5.0.1",
     "mocha": "^8.4.0"
   }
 }
