@@ -6,7 +6,9 @@ import { Preloader } from '../../components/Preloader'
 import { RepositoryInfo } from '../../components/RepositoryInfo'
 import { UserInfoHeader } from '../../components/UserInfoHeader'
 import { GenericError } from '../../components/GenericError'
-import { getUserRepositories, githubApi, getUserStarredRepositories, getUserByUsername } from '../../services/githubApi'
+
+
+import { getUserRepositories, githubApi, getUserStarredRepositories , getUserByUsername } from '../../services/githubApi'
 
 import Head from 'next/head'
 
