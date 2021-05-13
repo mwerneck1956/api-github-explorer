@@ -1,9 +1,11 @@
 const axios = require('axios');
 
+const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || '';
+
 export const githubApi = axios.create({
   baseURL: 'https://api.github.com/',     
   headers : {
-    'Authorization' : process.env.GITHUB_TOKEN || ''
+    'Authorization' : token
   }
 });
 

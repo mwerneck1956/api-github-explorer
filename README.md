@@ -43,9 +43,9 @@ $ cd src
 
 ### Configurando variáveis de ambiente
 
-Para configurar as variáveis de ambientes necessárias para o funcionamento da aplicação, você deve criar um arquivo chamado ```.env.local``` (para rodar localmente) com base no modelo presente no arquivo ```.env.example```, a única váriavel de ambiente é a GITHUB_TOKEN, que consiste no seu token de acesso pessoal do github, sem utilizar o token a aplicação está restrita a 60 requisições na api do github por hora, o formato do token é 
+Para configurar as variáveis de ambientes necessárias para o funcionamento da aplicação, você deve criar um arquivo chamado ```.env.local``` (para rodar localmente) com base no modelo presente no arquivo ```.env.example```, a única váriavel de ambiente é a NEXT_PUBLIC_GITHUB_TOKEN, que consiste no seu token de acesso pessoal do github. Sem utilizar o token a aplicação está restrita a 60 requisições na api do github por hora, o formato do token é 
 ```bash
-GITHUB_TOKEN = token seuToken
+NEXT_PUBLIC_GITHUB_TOKEN = token seuToken
 ```
 Instruções para obter o token de acesso pessoal : https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
