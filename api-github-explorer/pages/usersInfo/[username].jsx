@@ -8,6 +8,8 @@ import { UserInfoHeader } from '../../components/UserInfoHeader'
 import { GenericError } from '../../components/GenericError'
 import { getUserRepositories, githubApi, getUserStarredRepositories, getUserByUsername } from '../../services/githubApi'
 
+import Head from 'next/head'
+
 
 import styles from './styles.module.scss'
 
@@ -96,6 +98,11 @@ export default function usersInfo({ data }) {
 
    return !error ? (
       <>
+         <Head>
+            <title>Github User Info | {username} </title>
+            <meta name="description" content={`${username} info`}/>
+            <link rel="icon" href="/favicon.ico" />
+         </Head>
          <Navbar />
             <section className={styles.container}>
                <UserInfoHeader
