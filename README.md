@@ -38,7 +38,7 @@ Para começar processo de desenvolvimento você deve ter em sua máquina as segu
 
 ```bash
 $ git clone https://github.com/mwerneck1956/api-github-explorer.git
-$ cd api-github-explorer
+$ cd src
 ```
 
 ### Configurando variáveis de ambiente
