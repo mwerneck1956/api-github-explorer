@@ -2,7 +2,7 @@
 
 ## 🔖 Sobre
 
-> Consiste em  uma aplicação que usa a api do Github, para obter informações sobre um usuário, e listar  os repositórios do usuário, e os repositórios estrelados pelo usuário
+> Consiste em  uma aplicação que usa a api do Github, para obter informações sobre um usuário, listar  os repositórios do usuário, e os repositórios estrelados pelo usuário
 
 ## Como a aplicação funciona
 
