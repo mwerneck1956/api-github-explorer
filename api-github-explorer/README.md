@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align ='center' >  API-GITHUB EXPLORER </h1>
 
-## Getting Started
+## 🔖 Sobre
 
-First, run the development server:
+> Consiste em  uma aplicação que usa a api do Github, para obter informações sobre um usuário, e listar  os repositórios do usuário, e os repositórios estrelados pelo usuário
+
+## Como a aplicação funciona
+
+Ao executar o projeto, você sera redirecionado para a página de pesquisa, ao digitar seu usuário do github no campo de pesquisas, e apertar em buscar, você sera redirecionado para a página de informações do usuário, a mesma também pode ser acessada pela url http://localhost:3000/usersInfo/{username}, ao ser redirecionado para a página de informações do usuário sera mostrado na tela as informações do usuário, e a listagem de repositórios do mesmo, ao clicar no botão List Starred Repos, serão listados os repositórios estrelados pelo usuário, e ao clicar em listar repositórios, sera listado os repositórios do usuário.
+
+![Home](https://i.imgur.com/MQmEc6E.png)
+![UserInfo](https://i.imgur.com/vHenLVV.png)
+
+****
+
+## 💻 Linguagens/Frameworks/Bibliotecas Utilizadas
+
+* 🖥️ NextJS
+* ✏️ SASS
+* <img src = 'https://badges.aleen42.com/src/javascript.svg'> 
+*  <img alt = 'react' src = "https://badges.aleen42.com/src/react.svg">
+* <img alt ='mocha' src = 'https://badges.aleen42.com/src/mocha.svg'>
+
+## Url da aplicação
+
+A aplicação está hospedada na vercel e pode ser acessada pelo link https://api-github-explorer-s.vercel.app/
+
+#
+
+## Instalação
+
+Para começar processo de desenvolvimento você deve ter em sua máquina as seguintes ferramentas:
+
+- NodeJS
+- GIT
+
+### Baixando a aplicação
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ git clone https://github.com/mwerneck1956/api-github-explorer.git
+$ cd api-github-explorer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Configurando variáveis de ambiente
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Para configurar as variáveis de ambientes necessárias para o funcionamento da aplicação, você deve criar um arquivo chamado ```.env.local``` (para rodar localmente) com base no modelo presente no arquivo ```.env.example```, a única váriavel de ambiente é a GITHUB_TOKEN, que consiste no seu token de acesso pessoal do github, sem utilizar o token a aplicação está restrita a 60 requisições na api do github por hora, o formato do token é 
+```bash
+GITHUB_TOKEN = token seuToken
+```
+Instruções para obter o token de acesso pessoal : https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Instalando dependências
 
-## Learn More
+```bash
+$ npm i || yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Executando a aplicação
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+$ npm run dev || yarn dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 🧪 Testes
 
-## Deploy on Vercel
+O Projeto tem testes para verificar se as requisições de listagem de repositórios, listagem de usuário, e listagem de repositória starred pelo usuário estão funcionando, para rodar os testes é necessario digitar no terminal/bash :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+$ npm run test || yarn test
+```
