@@ -64,7 +64,7 @@ $ npm run dev || yarn dev
 
 ### 🧪 Testes
 
-O Projeto tem testes para verificar se as requisições de listagem de repositórios, listagem de usuário, e listagem de repositória starred pelo usuário estão funcionando, para rodar os testes é necessario digitar no terminal/bash :
+O Projeto tem testes para verificar se as requisições de listagem de repositórios, listagem de usuário, e listagem de repositória starred pelo usuário estão funcionando, para rodar os testes é necessario digitar no terminal/bash:
 
 ```bash
 $ npm run test || yarn test
