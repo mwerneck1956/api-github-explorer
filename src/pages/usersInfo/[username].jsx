@@ -89,7 +89,7 @@ export default function usersInfo({ data }) {
    function renderRepositoriesNotFound() {
       return (
             <h2 className={styles.repositoriesNotFound}>
-               Nenhum repositório encontrado!
+               No repository found!
             </h2>
       )
    }
