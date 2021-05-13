@@ -29,7 +29,6 @@ export default function usersInfo({ data }) {
    const { name, avatar_url, description, userRepositories } = data;
 
 
-
    //Váriavel para guardar a lista ativa do momento, se é de listagem
    //de repositórios starred, ou respositórios do usuário
    const [activeRepositoriesList,setActiveRepositoriesList] = useState('userRepos');
@@ -131,7 +130,7 @@ export default function usersInfo({ data }) {
             </section>
       </>
 
-   ) : <GenericError  title = {error} /> 
+   ) : <GenericError title = {error}/> 
 
 }
 export async function getServerSideProps(context) {
