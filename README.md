@@ -6,7 +6,7 @@
 
 ## Como a aplicação funciona
 
-Ao executar o projeto, você sera redirecionado para a página de pesquisa, ao digitar seu usuário do github no campo de pesquisas, e apertar em buscar, você sera redirecionado para a página de informações do usuário, a mesma também pode ser acessada pela url http://localhost:3000/usersInfo/{username}, ao ser redirecionado para a página de informações do usuário sera mostrado na tela as informações do usuário, e a listagem de repositórios do mesmo, ao clicar no botão List Starred Repos, serão listados os repositórios estrelados pelo usuário, e ao clicar em listar repositórios, sera listado os repositórios do usuário.
+Ao executar o projeto, você sera redirecionado para a página de pesquisas, ao digitar seu usuário do github no campo de pesquisas, e apertar em buscar, você sera redirecionado para a página de informações do usuário, a mesma também pode ser acessada pela url http://localhost:3000/usersInfo/{username}, ao ser redirecionado para a página de informações do usuário sera mostrado na tela as informações do usuário, e a listagem de repositórios do mesmo, ao clicar no botão List Starred Repos, serão listados os repositórios estrelados pelo usuário, e ao clicar em listar repositórios, sera listado os repositórios do usuário.
 
 ![Home](https://i.imgur.com/MQmEc6E.png)
 ![UserInfo](https://i.imgur.com/vHenLVV.png)
